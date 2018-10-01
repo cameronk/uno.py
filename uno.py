@@ -97,8 +97,6 @@ class Game:
             my_hand.append(new_card)
             self.confirm("drew", my_hand, new_card)
             return self.human_turn("You drew {} last turn.".format(new_card))
-        if action_str == "S":
-            return self.confirm("skipped", my_hand, "your turn")
         else:
             action_int = None
             try:
@@ -175,7 +173,6 @@ class Game:
 
     def view_hand(self, hand):
         print("D: Draw a card")
-        print("S: Skip your turn")
         for index, card in enumerate(hand):
             print("{}: {}".format(index, card))
         print("")
