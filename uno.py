@@ -29,6 +29,13 @@ class Game:
         print("")
 
     def start(self):
+        """
+        Start the game:
+        
+        Display a header
+        Deal cards
+        Run until somebody wins
+        """
         self.text_header()
         self.deal()
 
@@ -53,6 +60,9 @@ class Game:
         print("GG :-)\n")
 
     def deal(self):
+        """
+        Deal cards to players.
+        """
         deck = self.deck
 
         # Number of human players
@@ -71,6 +81,11 @@ class Game:
         deck.discard(deck.draw())
 
     def turn(self):
+        """
+        Run the current turn. Call a handler
+        function for a human if this is a human
+        turn (index does not equal 0)
+        """
         self.text_header()
         if self.index == 1:
             return self.human_turn()
@@ -79,6 +94,9 @@ class Game:
 
 
     def human_turn(self, message=None):
+        """
+        Let the human play their turn; ask for instructions.
+        """
         self.text_header()
 
         my_hand = self.hands[self.index]
@@ -127,6 +145,9 @@ class Game:
                 return self.human_turn("This isn't a valid action!")
 
     def computer_turn(self):
+        """
+        Let the computer play its turn.
+        """
 
         com_hand = self.hands[self.index]
         has_won = False
@@ -172,26 +193,32 @@ class Game:
     # --- #
 
     def view_hand(self, hand):
+        """View the player's hand."""
         print("D: Draw a card")
         for index, card in enumerate(hand):
             print("{}: {}".format(index, card))
         print("")
 
     def confirm(self, word, hand, card):
+        """Confirmation message when the player acts."""
         self.text_header()
         print("You {} {}, and now have {} cards.".format(word, card, len(hand)))
         next = input("Press any key to continue...")
         return False
 
     def confirm2(self, who, word):
+        """Confirmation message when the computer acts."""
         self.text_header()
         print("{} {}.".format(who, word))
         next = input("Press any key to continue...")
         return False
 
+"""
+Run the game.
+"""
 def run():
     game = Game()
     game.start()
 
 if __name__ == '__main__':
-    run()
+    run(sys.argv)
