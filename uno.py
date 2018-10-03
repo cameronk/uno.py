@@ -31,7 +31,7 @@ class Game:
     def start(self):
         """
         Start the game:
-        
+
         Display a header
         Deal cards
         Run until somebody wins
@@ -221,4 +221,4 @@ def run():
     game.start()
 
 if __name__ == '__main__':
-    run(sys.argv)
+    run()
